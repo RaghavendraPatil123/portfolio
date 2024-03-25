@@ -69,7 +69,6 @@ const ForecastCard: React.FC<ForecastCardProps> = ({
 const Weather: React.FC = () => {
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
     const [error, setError] = useState<string | null>(null);
     const [tempUnit, setTempUnit] = useState<'C' | 'F'>('C');
 
@@ -91,9 +90,7 @@ const Weather: React.FC = () => {
         }
     }, [searchQuery]);
 
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+  
 
     const toggleTempUnit = () => {
         setTempUnit(tempUnit === 'C' ? 'F' : 'C');
@@ -113,7 +110,7 @@ const Weather: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className={`font-poppins text-center p-10 ${theme}`}
+            className={`font-poppins text-center p-10 `}
             style={{ backgroundColor:'white', height: '100vh', width: '100vw' }}
         >
             <motion.div
@@ -185,7 +182,6 @@ const Weather: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -50 }}
                         transition={{ duration: 0.5 }}
-                        className={theme === 'light' ? 'text-black' : 'text-white'}
                     >
                         <h2 className="text-3xl mt-4">5 Day Forecast</h2>
                         <motion.div
